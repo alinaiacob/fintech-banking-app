@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import {Link} from "react-router-dom"
+import axios from "axios";
 const RegisterPage = () => {
     const[email,setEmail]=useState('')
     const[name,setName]=useState('')
@@ -7,10 +8,23 @@ const RegisterPage = () => {
     const[cpassword,setCPassword]=useState('')
     const[phoneNumber,setPhoneNumber]=useState('')
     const submit=(e)=>{
+      if(email.length!=0 && name.length!=0 && password.length!=0 && cpassword.length!=0 && password==cpassword && phoneNumber.length!=0){
+        let obj={
+          name:name,
+          email:email,
+          password:password,
+          cpassword:cpassword
+        }
+        console.log(obj)
+      }else if( password.length!=0 && cpassword.length!=0 && password!==cpassword ){
+        alert('Passwords do not match')
+      }
         e.preventDefault();
         console.log('submit') 
       
     }
+
+    axios.post()
   return (
     <div className='container'>
         <h1>Do you have a business idea? Create an account</h1>
